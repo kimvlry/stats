@@ -1,0 +1,35 @@
+name: Compile LaTeX
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup TeX Live
+        uses: xu-cheng/texlive-action@v2
+        with:
+          texlive-profile: minimal
+          extra-packages: |
+            amsmath
+            babel-russian
+            hyperref
+            graphicx
+
+      - name: Compile Parts
+        run: |
+          for part in partI partII; do
+            pdflatex -interaction=nonstopmode "$part.tex"
+            pdflatex -interaction=nonstopmode "$part.tex" 
+          done
+
+      - name: Upload PDFs
+        uses: actions/upload-artifact@v3
+        with:
+          name: compiled-pdfs
+          path: |
+            partI.pdf
+            partII.pdf
