@@ -21,18 +21,22 @@ jobs:
             amsmath
             hyperref
             graphics-def
-            amssymb
+            booktab
             array
-            booktabs
-            
+            amssymb
+            adjustbox
 
-      - name: Verify TeX installation
+      - name: Add TeX to PATH
         run: |
-          echo "PATH: $PATH"
-          which pdflatex           
-          pdflatex --version     
+          echo "$(/opt/texlive/2023/bin/x86_64-linux)" >> $GITHUB_PATH 
+          echo "Updated PATH: $PATH"
 
-      - name: Compile Parts
+      - name: Verify pdflatex
+        run: |
+          which pdflatex
+          pdflatex --version
+
+      - name: Compile LaTeX
         run: |
           for part in partI partII; do
             pdflatex -interaction=nonstopmode "$part.tex"
