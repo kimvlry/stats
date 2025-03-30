@@ -12,21 +12,25 @@ jobs:
       - name: Setup TeX Live
         uses: xu-cheng/texlive-action@v2
         with:
-          texlive-profile: full
-          texlive-version: 2023
+          texlive-profile: medium  
+          texlive-version: 2023 
           extra-packages: |
             pdflatex
             latexmk
             babel-russian
+            amsmath
             hyperref
             graphics-def
-            amsmath
+            amssymb
+            array
             booktabs
+            
 
-      - name: Verify pdflatex installation
+      - name: Verify TeX installation
         run: |
-          which pdflatex  
-          pdflatex --version
+          echo "PATH: $PATH"
+          which pdflatex           
+          pdflatex --version     
 
       - name: Compile Parts
         run: |
