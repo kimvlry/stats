@@ -13,16 +13,20 @@ jobs:
         uses: xu-cheng/texlive-action@v2
         with:
           texlive-profile: full
+          texlive-version: 2023
           extra-packages: |
             pdflatex
             latexmk
             babel-russian
             hyperref
             graphics-def
+            amsmath
+            booktabs
 
-      - name: Add TeX to PATH
+      - name: Verify pdflatex installation
         run: |
-          echo "$(/opt/texlive/2023/bin/*/dirname pdflatex)" >> $GITHUB_PATH
+          which pdflatex  
+          pdflatex --version
 
       - name: Compile Parts
         run: |
