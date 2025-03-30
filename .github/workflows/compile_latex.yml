@@ -12,18 +12,23 @@ jobs:
       - name: Setup TeX Live
         uses: xu-cheng/texlive-action@v2
         with:
-          texlive-profile: minimal
+          texlive-profile: full
           extra-packages: |
-            amsmath
+            pdflatex
+            latexmk
             babel-russian
             hyperref
-            graphicx
+            graphics-def
+
+      - name: Add TeX to PATH
+        run: |
+          echo "$(/opt/texlive/2023/bin/*/dirname pdflatex)" >> $GITHUB_PATH
 
       - name: Compile Parts
         run: |
           for part in partI partII; do
             pdflatex -interaction=nonstopmode "$part.tex"
-            pdflatex -interaction=nonstopmode "$part.tex" 
+            pdflatex -interaction=nonstopmode "$part.tex"
           done
 
       - name: Upload PDFs
