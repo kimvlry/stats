@@ -14,21 +14,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Build PDF for partI.tex
+      - name: Build PDF for 1.1.tex
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: partI.tex
+          root_file: 1.1.tex
 
-      - name: Build PDF for partII.tex
+      - name: Build PDF for 1.2.tex
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: partII.tex
+          root_file: 1.2.tex
 
       - name: Move PDFs to output folder
         run: |
           mkdir -p compiled-pdfs
-          mv partI.pdf compiled-pdfs/partI.pdf
-          mv partII.pdf compiled-pdfs/partII.pdf
+          mv 1.1.pdf compiled-pdfs/1.1.pdf
+          mv 1.2.pdf compiled-pdfs/1.2.pdf
 
       - name: Upload PDFs as artifact
         uses: actions/upload-artifact@v4
