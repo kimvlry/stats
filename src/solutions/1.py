@@ -1,6 +1,4 @@
 import math
-from tkinter import YView
-
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -92,7 +90,6 @@ plt.xticks(X, labels=[str(m) for m in X])
 # Гистограмма относительных частот и полигон относительных частот
 Y = relative_freqs
 plt.subplot(1, 3, 2)
-# bar is histogram
 plt.bar(X, Y, width=intervals[1] - intervals[0], edgecolor='black', alpha=0.6, label='Гистограмма отн. частот')
 plt.plot(X, Y, marker='o', color='r', label='Полигон отн. частот', linestyle='--')
 plt.title('Гистограмма + полигон отн. частот')
@@ -136,7 +133,7 @@ plt.close()
 # для соответствующих интервалов.
 
 plt.xlabel('Значение $x$')
-X = intervals[1:]  # Правые границы интервалов
+X = intervals[1:] 
 X = np.round(X, 2)
 plt.ylabel('$F_n(x)$')
 Y = accum_rel_freqs
