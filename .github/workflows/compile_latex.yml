@@ -12,22 +12,39 @@ jobs:
       - name: Setup TeX Live
         uses: xu-cheng/texlive-action@v2
         with:
-          texlive-profile: minimal
+          texlive-profile: medium  
+          texlive-version: 2023 
           extra-packages: |
-            amsmath
+            pdflatex
+            latexmk
             babel-russian
+            amsmath
             hyperref
-            graphicx
+            graphics-def
+            booktab
+            array
+            amssymb
+            adjustbox
 
-      - name: Compile Parts
+      - name: Add TeX to PATH
+        run: |
+          echo "$(/opt/texlive/2023/bin/x86_64-linux)" >> $GITHUB_PATH 
+          echo "Updated PATH: $PATH"
+
+      - name: Verify pdflatex
+        run: |
+          which pdflatex
+          pdflatex --version
+
+      - name: Compile LaTeX
         run: |
           for part in partI partII; do
             pdflatex -interaction=nonstopmode "$part.tex"
-            pdflatex -interaction=nonstopmode "$part.tex" 
+            pdflatex -interaction=nonstopmode "$part.tex"
           done
 
       - name: Upload PDFs
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: compiled-pdfs
           path: |
