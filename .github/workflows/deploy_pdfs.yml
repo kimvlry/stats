@@ -26,7 +26,7 @@ jobs:
 
       - name: Move PDFs to output folder
         run: |
-          mkdir -p compiled_pdfs
+          mkdir -p compiled-pdfs
           mv partI.pdf compiled-pdfs/partI.pdf
           mv partII.pdf compiled-pdfs/partII.pdf
 
