@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Build PDFs
-        uses: xu-cheng/latex-action@v2
+        uses: xu-cheng/latex-action@v3
         with:
           root_file: partI.tex, partII.tex
 
@@ -26,7 +26,7 @@ jobs:
           mv partII.pdf compiled-pdfs/partII.pdf
 
       - name: Upload PDFs as artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: compiled-pdfs
           path: compiled-pdfs/
