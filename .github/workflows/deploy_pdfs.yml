@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build PDFs
-        uses: xu-cheng/latex-action@v4
+        uses: xu-cheng/latex-action@v2
         with:
           root_file: partI.tex, partII.tex
 
