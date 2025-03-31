@@ -7,6 +7,12 @@
 \usepackage{amsthm}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{framed}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{amssymb}
+\usepackage{adjustbox}
+\usepackage{makecell}
+\usepackage{float}
 
 \definecolor{shadecolor}{RGB}{245,245,247} 
 \geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
@@ -16,10 +22,10 @@
 \date{}
 
 \theoremstyle{definition}
-\newtheorem{problem}{Задача}
+\newtheorem{problem}{Задача}\setlength{\parindent}{0pt}
 
 \newenvironment{solution}
-{\begin{shaded}\textbf{Решение:}\par}
+{\begin{shaded}\textbf{Решение:}\par\setlength{\parindent}{0pt}}
 {\end{shaded}}
 
 \newenvironment{answer}
@@ -30,9 +36,61 @@
 
 \maketitle
 
-% Задача 1
+% 1
 \begin{problem}
-пупупу
+    Пассажир, приходящий в случайные моменты времени на автобусную остановку, в течение
+    пяти поездок фиксировал свое время ожидания автобуса : 5,3; 3,8; 1,2; 9,2; 4,7 минуты.
+    Известно, что автобус ходит с интервалом в \( \Theta \) минут. Оценить методом максимального
+    правдоподобия \( \Theta \). Вычислить несмещенную оценку.
+
+    \begin{solution}
+    \end{solution}
+
+    \begin{answer}
+    \end{answer}
+
+\end{problem}
+
+
+
+% 2
+\begin{problem}
+    Случайная величина \( \xi \)(число семян сорников в пробе зерна) распределена по закону Пуассона.
+    Ниже прриведено распределение семян сорников в \( n = 1000 \) пробах семян. 
+
+    \begin{table}[H]
+        \centering
+        \begin{adjustbox}{max width=\textwidth}
+            \begin{tabular}{c c c c c c c c}
+                \toprule
+                \midrule
+                    \(x_i\) & 0   & 1   & 2   & 3  & 4 & 5 & 6 \\
+                    \(n_1\) & 405 & 366 & 175 & 40 & 8 & 4 & 2 \\
+            \bottomrule
+            \end{tabular}
+        \end{adjustbox}
+    \end{table}  
+
+    Найти методом моментов точную оценку параметра \( \lambda \). 
+    Оценить вероятность того, что в пробе зерна не будет сорняков 
+
+    \begin{solution}
+    \end{solution}
+
+    \begin{answer}
+    \end{answer}
+
+\end{problem}
+
+
+
+% 3
+\begin{problem}
+    Пусть \(X_1,X_2, ... ,X_n\) – случайная выборка из генеральной совокупности \(X\), 
+    имеющей нормальное распределение с неизвестным средним значением \( \Theta \) 
+    и известной дисперсией \( \sigma ^ 2\). Доказать, что оценка 
+    \( \hat\Theta = \hat\Theta (X_1,X_2, ... ,X_n = X_1) \) является несмещенной, 
+    но не является состоятельной оценкой.
 
     \begin{solution}
     \end{solution}
