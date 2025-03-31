@@ -39,8 +39,8 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
-          CLEAN: true
-          FOLDER: compiled-pdfs
-          TARGET_FOLDER: pdfs
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          clean: true
+          folder: compiled-pdfs
+          target-folder: pdfs
