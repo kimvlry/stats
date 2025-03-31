@@ -27,7 +27,7 @@ jobs:
       - name: Move PDFs to output folder
         run: |
           mkdir -p compiled-pdfs
-          mv src/reports/1.1.pdf compiled-pdfs/1.1.pdf   # Перемещаем файлы из src/reports
+          mv src/reports/1.1.pdf compiled-pdfs/1.1.pdf   
           mv src/reports/1.2.pdf compiled-pdfs/1.2.pdf
 
       - name: Upload PDFs as artifact
