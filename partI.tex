@@ -12,6 +12,7 @@
 \usepackage{amssymb}
 \usepackage{adjustbox}
 \usepackage{makecell}
+\usepackage{float}
 
 \definecolor{shadecolor}{RGB}{245,245,247} 
 \geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
@@ -24,11 +25,11 @@
 \newtheorem{problem}{Задача}
 
 \newenvironment{solution}
-{\begin{shaded}\textbf{Решение:}\par}
+{\begin{shaded}\textbf{Решение:}\par\setlength{\parindent}{0pt}}
 {\end{shaded}}
 
 \newenvironment{answer}
-{\par\noindent\textbf{Ответ:} \color{blue}}
+{\par\noindent\textbf{Ответ:} }
 {\par}
 
 \begin{document}
@@ -59,9 +60,11 @@
     Представить выборку из n=100 значений в виде вариационного ряда. Найти
     размах ряда $R = X_{max} - X_{min}$
         \begin{solution}
+            \( R = 19.89 - 5.13 \approx 14.76\)
         \end{solution}
 
         \begin{answer}
+            14.76
         \end{answer}
 
     \end{problem}
@@ -75,9 +78,14 @@
     интервалов m (формула Стерженса) и вычислив ширину интервала \(h = R/m\)
     
         \begin{solution}
+            Число интервалов по формуле Стёрженса: \( m = \log_2 (N) + 1 =7\) \\
+            Ширина интервала: \( h = R/m = 14.76/7 \approx 2.109\) \\
+            Интервальный статистический ряд - это столбцы "границы интервала" 
+            и "частота" в следующем задании
         \end{solution}
     
         \begin{answer}
+            7 интервалов, шириной 2.109
         \end{answer}
     
     \end{problem}
@@ -89,36 +97,53 @@
 \begin{problem}
     Результаты группировки свести в таблицу:
 
-    \begin{table}[ht]
+    \begin{table}[H]
         \centering
-         \label{tab:interval_distribution}
         \begin{adjustbox}{max width=\textwidth}
             \begin{tabular}{l c c c c c c c}
                 \toprule
-                \makecell{Номер\\интервала \( i \)} & 
-                \makecell{Границы \\ интервала \( i \)} & 
-                \makecell{Середина\\интервала \( x_i \)} & 
-                \makecell{Частота\\\( n_i \)} & 
-                \makecell{Отн. частота\\\( W_i = \frac{n_i}{N} \)} & 
-                \makecell{Накопл.\\частота\\\( \sum^i_j n_i \)} & 
-                \makecell{Накопл. отн.\\частота\\\( \sum^i_j \frac{n_i}{N} \)} & 
-                \makecell{Плотность\\отн. частоты\\\( \frac{W_i}{h} \)} \\
-                \midrule
-                1 & [a; b) & x & n & W & S & F & p \\
-                2 & [c; d) & x & n & W & S & F & p \\
-                \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
-                k & [e; f) & x & n & W & S & F & p \\
-                \bottomrule
+                    \makecell{Номер\\интервала \( i \)} & 
+                    \makecell{Границы \\ интервала \( i \)} & 
+                    \makecell{Середина\\интервала \( x_i \)} & 
+                    \makecell{Частота\\\( n_i \)} & 
+                    \makecell{Отн. частота\\\( W_i = \frac{n_i}{N} \)} & 
+                    \makecell{Накопл.\\частота\\\( \sum^i_j n_i \)} & 
+                    \makecell{Накопл. отн.\\частота\\\( \sum^i_j \frac{n_i}{N} \)} & 
+                    \makecell{Плотность\\отн. частоты\\\( \frac{W_i}{h} \)} \\
+                        \midrule
+                            \dots & \dots & \dots & \dots & \dots & \dots & \dots & \dots \\
+                        \bottomrule
             \end{tabular}
+        \end{adjustbox}
+    \end{table}  
+
+    \begin{solution}
+        \begin{table}[H]
+            \centering
+            \begin{adjustbox}{max width=\textwidth}
+                \begin{tabular}{l c c c c c c c}
+                    \toprule
+                        \makecell{Номер\\интервала \( i \)} & 
+                        \makecell{Границы \\ интервала \( i \)} & 
+                        \makecell{Середина\\интервала \( x_i \)} & 
+                        \makecell{Частота\\\( n_i \)} & 
+                        \makecell{Отн. частота\\\( W_i = \frac{n_i}{N} \)} & 
+                        \makecell{Накопл.\\частота\\\( \sum^i_j n_i \)} & 
+                        \makecell{Накопл. отн.\\частота\\\( \sum^i_j \frac{n_i}{N} \)} & 
+                        \makecell{Плотность\\отн. частоты\\\( \frac{W_i}{h} \)} \\
+                            \midrule
+                                1 & [5.13; 7.24) & 6.18 & 1 & 0.01 & 1 & 0.01 & 0.0047 \\
+                                2 & [7.24; 9.35) & 8.29 & 0 & 0 & 1 & 0.01 & 0 \\
+                                3 & [9.35; 11.46) & 10.40 & 2 & 0.02 & 3 & 0.03 & 0.0095 \\
+                                4 & [11.46; 13.56) & 12.51 & 19 & 0.19 & 22 & 0.22 & 0.0901 \\
+                                5 & [13.56; 15.67) & 14.62 & 46 & 0.46 & 68 & 0.68 & 0.2182 \\
+                                6 & [15.67; 17.78) & 16.73 & 28 & 0.28 & 96 & 0.96 & 0.1328 \\
+                                7 & [17.78; 19.89) & 18.84 & 4 & 0.04 & 100 & 1 & 0.019 \\
+                            \bottomrule
+                \end{tabular}
             \end{adjustbox}
         \end{table}  
-    
-        \begin{solution}
-        \end{solution}
-    
-        \begin{answer}
-        \end{answer}
-    
+    \end{solution}
     \end{problem}
 
 
@@ -135,9 +160,11 @@
     высотами, равными частостям ( или плотностям частостей) интервалов)
     
         \begin{solution}
+            
         \end{solution}
     
         \begin{answer}
+            
         \end{answer}
     
     \end{problem}
@@ -159,6 +186,7 @@
     интервалов.
     
         \begin{solution}
+            
         \end{solution}
     
         \begin{answer}
