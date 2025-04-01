@@ -13,6 +13,7 @@
 \usepackage{adjustbox}
 \usepackage{makecell}
 \usepackage{float}
+\usepackage{amsmath}
 
 \definecolor{shadecolor}{RGB}{245,245,247} 
 \geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
@@ -29,7 +30,7 @@
 {\end{shaded}}
 
 \newenvironment{answer}
-{\par\noindent\textbf{Ответ:} \color{blue}}
+{\par\noindent\textbf{Ответ:}}
 {\par}
 
 \begin{document}
@@ -44,15 +45,45 @@
     правдоподобия \( \Theta \). Вычислить несмещенную оценку.
 
     \begin{solution}
+        Описано равномерное распределение:
+        \begin{equation}
+            f(x) = 
+            \begin{cases}
+                \dfrac{1}{\Theta}, & 0 \leq x \leq \Theta), \\
+                0,                 & x < 0 \lor x > \Theta).
+            \end{cases}
+        \end{equation}
+        Выборка: \( 1.2, 3.8, 4.7, 5.3, 9.2 \), ее максимум - \(9,2\). 
+        Для \(\Theta < 9.2\), \(x_{max}\) будет выходить за пределы \( [0,\Theta] \), 
+        и функция распределения примет значение 0 (невозможное время ожидания автобуса)\\
+
+        \begin{enumerate}
+            \item Составим функцию правдоподобия: \\
+                При \(\Theta \geq 9.2\):
+                \[ L(x_1, \dots, x_5, \Theta) = \prod{i=1}^5 f(x_i, \Theta) = \prod^5_{i=1} \frac{1}{\Theta} = \frac{1}{\Theta^5}, \] тогда:
+
+                \begin{equation}
+                    L(\Theta) = 
+                    \begin{cases}
+                        \dfrac{1}{\Theta^5}, & \Theta \geq 9.2, \\
+                        0,                  & \Theta < 9.2
+                    \end{cases}
+                \end{equation}
+            \item  Теперь нужно максимизировать \( L(\Theta)\).\\
+                   \(\dfrac{1}{\Theta^5}\) возрастает при убывании знаменателя, то есть,
+                   подойдет минимальное \(\Theta\), при котором \(L(\Theta) > 0\). 
+                   Единственное такое значение - это \(x_{max} = 9.2\)
+        \end{enumerate}
     \end{solution}
 
     \begin{answer}
+        9.2
     \end{answer}
 
 \end{problem}
 
 
-
+\vspace{8pt}
 % 2
 \begin{problem}
     Случайная величина \( \xi \) (число семян сорников в пробе зерна) распределена по закону Пуассона.
@@ -83,7 +114,7 @@
 \end{problem}
 
 
-
+\vspace{8pt}
 % 3
 \begin{problem}
     Пусть \(X_1,X_2, ... ,X_n\) – случайная выборка из генеральной совокупности \(X\), 
