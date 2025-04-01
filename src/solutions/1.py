@@ -116,7 +116,7 @@ for i, val in enumerate(Y):
 plt.xticks(X, labels=[str(m) for m in X])
 
 plt.tight_layout()
-plt.savefig('task4_graphic.png')
+plt.savefig('1.14.png')
 plt.close()
 
 
@@ -147,7 +147,7 @@ plt.xticks(X, labels=[str(m) for m in X])
 plt.title('Эмпирическая функция распределения $F_n(x)$')
 plt.grid(True)
 plt.legend()
-plt.savefig('task5_graphic.png')
+plt.savefig('1.1.5.png')
 
 
 
@@ -171,7 +171,7 @@ plt.xticks(X, labels=[str(m) for m in X])
 plt.title('Эмпирическая F (дискретный вариационный ряд)')
 plt.grid(True)
 plt.legend()
-plt.savefig('task6_graphic.png')
+plt.savefig('1.1.6.png')
 
 
 
