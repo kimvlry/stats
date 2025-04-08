@@ -24,11 +24,17 @@ jobs:
         with:
           root_file: src/reports/1.2.tex  
 
+      - name: Build PDF for 2.0.tex
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: src/reports/2.0.tex 
+
       - name: Move PDFs to output folder
         run: |
           mkdir -p compiled-pdfs
           mv 1.1.pdf compiled-pdfs/1.1.pdf 
           mv 1.2.pdf compiled-pdfs/1.2.pdf 
+          mv 2.0.pdf compiled-pdfs/2.0.pdf 
 
       - name: Upload PDFs as artifact
         uses: actions/upload-artifact@v4
