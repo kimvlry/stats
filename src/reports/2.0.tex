@@ -1,0 +1,377 @@
+% chktex-file 44
+
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{geometry}
+\usepackage{amsthm}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{framed}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{amssymb}
+\usepackage{adjustbox}
+\usepackage{makecell}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{mdframed}
+\mdfsetup{
+    innerleftmargin=15pt,    
+    innerrightmargin=15pt,  
+    innertopmargin=10pt,    
+    innerbottommargin=12pt,
+    leftline=false,
+    rightline=false,
+    topline=false,
+    bottomline=false
+}
+\newenvironment{shdd}{\begin{mdframed}[backgroundcolor=shadecolor]}{\end{mdframed}}
+
+\definecolor{shadecolor}{RGB}{245,245,247} 
+\geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
+
+\title{Типовой расчет №2 \\ по математической статистике. \\ Интервальная оценка}
+\author{Ким В.Р. \\ Группа M3207 \\ Вариант №5}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Задача}\setlength{\parindent}{0pt}
+
+\newenvironment{solution}
+{\begin{shdd}\textbf{Решение:}\par\setlength{\parindent}{0pt}}
+{\end{shdd}}
+
+\newenvironment{answer}
+{\par\noindent\textbf{Ответ:}}
+{\par}
+
+\begin{document}
+
+\maketitle
+
+\begin{shdd}
+    \textbf{Теоретическая справка}\par\setlength{\parindent}{0pt}
+    Вероятность попадания в доверительный интервал = доверительная вероятность \(\beta\):
+    \[
+    P(\hat{\theta} - \delta < \theta < \hat{\theta} + \delta) = \beta,
+    \]
+    отношение \(\frac{t_{\gamma}s}{\sqrt{n}} = \beta\) называется точностью оценки. 
+    \begin{itemize}
+        \item \textbf{Если \(\sigma\) (генеральное СКО) известно}:
+        границы доверительного интервала определяются как
+        \[
+        \bar{x} +- \frac{t_{\gamma}\sigma}{\sqrt{n}},
+        \]
+        \(t_\gamma\) можно найти из соотношения 
+        \[
+        2\Phi(t_\gamma) = \beta,
+        \] 
+
+        \item \textbf{Если \(\sigma\) неизвестно:}
+        границы интервала вычисляются по похожей формуле:
+        \[
+        \bar{x} +- \frac{t_{\gamma}s}{\sqrt{n}},
+        \]
+        но вместо \(\sigma\) здесь \(s\) - его несмещенная оценка. 
+        \\ А \(t_\gamma\) - значение t-распределения (распр. Стьюдента) с \(n-1\) степенями 
+        свободы (табличное значение)
+
+        \item  \textbf{Чтобы найти доверительный интервал для СКО}, используем распределение Хи-квадрат. 
+        Оно связано с СКО следующим образом  
+        \[
+        \frac{(n-1)s^2}{\sigma^2}\sim\chi^2_{n-1},
+        \]
+        \newline а доверительный интервал для СКО определяется так:
+        \[
+        \frac{(n-1)s^2}{\chi^2_{\alpha_1, \, k}} \leq \sigma^2 \leq \frac{(n-1)s^2}{\chi^2_{\alpha_2, \, k}},
+        \]
+        где \(k=n-1\) - число степеней свободы, \(\alpha_1 = \frac{1-\gamma}{2}\), \(\alpha_2 = \frac{1+\gamma}{2}.\)
+    \end{itemize}
+\end{shdd}
+\vspace{10pt}
+
+\newpage
+% 1
+\begin{problem}
+    Построить доверительные интервалы при значениях надежности \(\gamma=0,95\), 
+    \(\gamma=0,99\), \(\gamma=0,999\) для математического ожидания случайной величины, 
+    распределенной по нормальному закону. Выборка \(n=50\).
+        \begin{enumerate}
+            \item Каким образом величина доверительной вероятности влияет на ширину 
+            доверительного интервала? 
+            \item Как увеличить точность оценки при заданном значении надежности?
+        \end{enumerate} 
+    \begin{solution}
+        \(\sigma\) неизвестно. \(t_\gamma\) находим по таблице, для \(n - 1 = 49\) степеней свободы:
+        \\ \(t_{0.95} \approx 2.008\), \(t_{0.99} \approx 2.678\), \(t_{0.999} \approx 3.501\).
+        \\ Интервалы: 
+        \[
+        \mu_{95}\in (\bar{x} - 2.008\frac{s}{\sqrt{50}};\; \bar{x} + 2.008\frac{s}{\sqrt{50}})
+        \]
+        \[
+        \mu_{99}\in (\bar{x} - 2.678\frac{s}{\sqrt{50}};\; \bar{x} + 2.678\frac{s}{\sqrt{50}})
+        \]
+        \[
+        \mu_{999}\in (\bar{x} - 3.501\frac{s}{\sqrt{50}};\; \bar{x} + 3.501\frac{s}{\sqrt{50}})
+        \]
+
+        \begin{enumerate}
+            \item Больше \(\gamma\) - шире интервал. Формально: \(t_{\gamma}\) возрастает одновременно 
+                  с \(\gamma\rightarrow\) возрастает и модуль \(\bar{x} +- \frac{t_{\gamma}\sigma}{\sqrt{n}}\).
+                  Логически - чтобы с большими гарантиями покрыть истинное значение - нужно взять больший интервал.
+            \item Нужно уменьшить доверительный интервал, за счет увеличения выборки 
+            (больше \(n\rightarrow\) меньше \(\beta\rightarrow\) - у`же интервал)
+        \end{enumerate}
+    \end{solution}
+
+    % \begin{answer}
+    % \end{answer}
+\end{problem}
+
+
+\vspace{10pt}
+% 2
+\begin{problem}
+    Шестикратное взвешивание изделия из ценного материала дало следующие результаты
+    (в граммах): 
+    \\ 5.825, 5.844, 5.846, 5.850, 5.857, 5.861. 
+    \\ Предполагая, что результаты измерений распределены по нормальному закону, требуется:
+    \begin{enumerate}
+        \item Найти точечные оценки математического ожидания и среднего квадратического отклонения;
+        \item Найти 99\%-ный доверительный интервал, покрывающий истинный вес изделия; 
+        \item Найти 95\%-ный доверительный интервал, покрывающий среднее квадратическое отклонение; 
+        \item Найти предельную погрешность, которую мы допускаем, считая истинный вес изделия равным
+        средней арифметической (доверительную вероятность принять равной 0,98).
+    \end{enumerate} 
+    \begin{solution}
+        \begin{enumerate}
+            \item Точечная оценка мат. ожидания - выборочное среднее: 
+                \[
+                \bar{x} = \frac{(5.825+5.844+5.846+5.850+5.857+5.861)}{6}\approx5.847
+                \]
+                
+                Точечная оценка СКО - корень из исправленной выборочной дисперсии:
+                \[
+                s = \sqrt{\frac{1}{n-1}\sum^n_{i=1}(x_i - \bar{x})^2} 
+                = \sqrt{\frac{1}{5}\sum^n_{i=1}(x_i - 5.847)^2}
+                \]
+                
+                \[
+                = \sqrt{\frac{0.022^2+2\cdot0.003^2+0.001^2+0.01^2+0.014^2}{5}} \approx 0.013
+                \]
+
+            \item 
+                \(\gamma = 0.99\), то таблице: \(t_{0.99}(5) \approx 6.86\).
+                \newline Границы интервала: 
+                    \[ \bar{x} +- \frac{t_{\gamma}s}{\sqrt{n}}, = 5.847 +- \frac{6.86\cdot0.013}{\sqrt{6}} \rightarrow \approx (5.81; 5.88)\]
+            \item Найдем доверительный интервал с помощью распределения Хи-квадрат:
+                \newline \(k=n-1=5,\)
+                \newline \[\alpha_1 = \frac{1-\gamma}{2} = \frac{0.05}{2} = 0.025, \quad \chi^2_{0.025, 5} = 12.8,\]
+                \newline \[
+                         \alpha_2 = \frac{1+\gamma}{2} = \frac{1.95}{2} = 0.975 \quad \chi^2_{0.975, 5} = 0.831
+                         \] 
+
+                         \[
+                         \frac{(n-1)s^2}{\chi^2_{\alpha_1, \, k}} \leq \sigma^2 \leq \frac{(n-1)s^2}{\chi^2_{\alpha_2, \, k}}; 
+                         \quad\frac{5\cdot 0.013^2}{12.8} \leq \sigma^2 \leq \frac{5\cdot 0.013^2}{0.831};
+                         \]
+                         
+                         \[
+                         \quad 0.0000660156 \leq\sigma^2 \leq 0.00101685; 
+                         \]
+                         
+                         \[
+                         \sqrt{0.0000660156} \leq\sigma \leq \sqrt{0.00101685}.
+                         \]
+        
+            \item \(\gamma=0.98\)
+                  \[\Delta = \frac{t_{\gamma}s}{\sqrt{n}} = \frac{4.03\cdot 0.013}{\sqrt{6}} = 0.21\]
+        \end{enumerate}
+    \end{solution}
+
+    % \begin{answer}
+    % \end{answer}
+
+\end{problem}
+
+
+\vspace{10pt}
+% 3
+\begin{problem}
+    Случайная величина \(\xi\) (число сорняков в пробе зерна) распределена по закону
+    Пуассона. Ниже приведено распределение семян сорняков в \(n\) пробах зерна \(x_i\) –
+    количество сорняков в одно пробе. \(n_i\) - число проб, содержащих \(x_i\) семян сорняков.
+    \\Построить доверительный интервал для параметра \(\lambda\) с надежностью \(0,95\)
+    \begin{table}[H]
+        \centering
+        \begin{adjustbox}{max width=\textwidth}
+            \begin{tabular}{c c c c c c c c c}
+                \toprule
+                \midrule
+                    \(x_i\) & 0   & 1   & 2   & 3  & 4 & 5 & 6 & 7 \\
+                    \(n_1\) & 396 & 361 & 173 & 48 & 11 & 7 & 3 & 1 \\
+            \bottomrule
+            \end{tabular}
+        \end{adjustbox}
+    \end{table}  
+
+    
+    \begin{solution}
+        Закон Пуассона: 
+        \[
+        P(x) = \frac{\lambda^x e^{-\lambda}}{x!} 
+        \]
+        \(n = \sum(n_i) = 1000\). Для распределения Пуассона мат. ожидание равно \(\lambda\), 
+        тогда оценку \(\hat{\lambda}\) можно найти как выборочное среднее: 
+        \[
+        \hat{\lambda} = \frac{361 + 173\cdot2 + 48\cdot3 + 44 + 35 + 18 + 7}{1000} = 0.955
+        \] 
+
+        Выборка большая, можем использовать асимптотическое приближение. По ЦПТ выборочное среднее 
+        имеет асимптотически нормальное распределение \(N(\mu,\, \sigma^2)\), найдем его параметры:
+        \begin{enumerate}
+            \item \(\mu = \lambda\) по свойству распределения Пуассона
+            \item Найдём дисперсию суммы \( \sum_{i=1}^n X_i \). Так как \(X_i\) независимы:
+            \[
+            D\left(\sum_{i=1}^n X_i\right) = \sum_{i=1}^n D(X_i) = \sum_{i=1}^n \lambda = n\lambda.
+            \]
+            Так как \(\hat{\lambda} = \frac{1}{n} \sum_{i=1}^n X_i\), найдём дисперсию оценки:
+            \[
+            D(\hat{\lambda}) = D\left(\frac{1}{n} \sum_{i=1}^n X_i \right) 
+            = \frac{1}{n^2} \cdot D\left(\sum_{i=1}^n X_i\right) 
+            = \frac{1}{n^2} \cdot n\lambda = \frac{\lambda}{n}.
+            \]
+            Итого: \(\hat{\lambda} \sim N\left(\lambda,\, \frac{\lambda}{n}\right).\)
+        \end{enumerate}
+            
+            Определим стандартную ошибку:
+            \[
+            SE = \sqrt{D(\hat{\lambda})} = \sqrt{\frac{\hat{\lambda}}{n}} = \sqrt{\frac{0.955}{1000}} \approx 0.0309.
+            \]
+            
+            Для доверительной вероятности \(\gamma = 0.95\), краевые значения определяются как:
+            \[
+            \alpha = 1 - \gamma = 0.05,\quad \frac{\alpha}{2} = 0.025.
+            \]
+            Тогда используем квантиль стандартного нормального распределения:
+            \[
+            z_{1 - \frac{\alpha}{2}} = z_{0.975} \approx 1.96.
+            \]
+            
+            Тогда доверительный интервал для \(\lambda\) имеет вид:
+            \[
+            \hat{\lambda} \pm z_{0.975} \cdot SE \quad \rightarrow \quad 0.955 \pm 1.96 \cdot 0.0309.
+            \]
+            
+            Вычисляем погрешность:
+            \[
+            1.96 \cdot 0.0309 \approx 0.0605.
+            \]
+            
+            Таким образом, доверительный интервал:
+            \[
+            0.955 - 0.0605 \leq \lambda \leq 0.955 + 0.0605,
+            \]
+            
+    \end{solution}
+
+    \begin{answer}
+        (0.8945;\, 1.0155)
+    \end{answer}
+
+\end{problem}
+
+
+\vspace{10pt}
+% 4
+\begin{problem}
+    Для экспоненциального распределения “со сдвигом” , имеющего плотность
+    \begin{equation}
+        f(x; \theta) = 
+        \begin{cases}
+            e^{-x-\theta}, & x\geq\theta \\
+            0, &x<\theta
+        \end{cases}
+    \end{equation}
+    
+    по выборке объема \(n\) построить интервальную оценку параметра \(\theta\) (сдвиг) с доверительной
+    вероятностью \(\gamma\)
+    \begin{solution}
+        Сделав замену переменной \(y=x-\theta\), получаем, что \(y\ge0\) и функция плотности
+        \[
+        f_Y(y)= e^{-y},\quad y \ge 0,
+        \]
+        это плотность стандартного экспоненциального распределения. 
+    
+        Пусть \(X_1, X_2, \dots, X_n\) — независимая выборка из данного распределения. Заметим, что условие \(x \ge \theta\) 
+        для всех наблюдений позволяет нам использовать минимальное значение выборки как статистику, содержащую всю информацию 
+        о сдвиге \(\theta\). Обозначим
+        \[
+        X_{min} = \min\{X_1, X_2, \dots, X_n\}.
+        \]
+    
+        Для каждой величины \(X_i\) имеем
+        \[
+        X_i = \theta + Y_i,\quad \text{где } Y_i\sim \operatorname{Exp}(1).
+        \]
+        Тогда
+        \[
+        X_{min} = \theta + \min\{Y_1, \dots, Y_n\}.
+        \]
+        Из известных результатов о минимуме независимых экспоненциальных величин следует, что
+        \[
+        \min\{Y_1, \dots, Y_n\} \sim \operatorname{Exp}(n),
+        \]
+        то есть имеет функцию распределения
+        \[
+        F_Z(z) = 1 - e^{-nz},\quad z \ge 0.
+        \]
+        Обозначим
+        \[
+        Z = X_{min} - \theta \sim \operatorname{Exp}(n).
+        \]
+    
+        Мы ищем такое множество \(I\), что
+        \[
+        P(\theta \in I) = \gamma.
+        \]
+        
+        Используя распределение \(Z\), найдем квантиль \(z_\gamma\) такой, что \(P(Z \le z_\gamma) = \gamma\).
+        \\Из функции распределения \(F_Z(z)=1-e^{-nz}\) получаем:
+        \[
+        1-e^{-nz_\gamma}=\gamma \quad \Rightarrow \quad e^{-nz_\gamma}=1-\gamma,
+        \]
+        выразим \(z_{\gamma}\)
+        \[
+        z_\gamma=-\frac{1}{n}\ln(1-\gamma).
+        \]
+    
+        Так как \(Z=X_{min}-\theta\), равносильно:
+        \[
+        P\Bigl(X_{min} -\theta \le z_\gamma \Bigr)=\gamma \Leftrightarrow P\Bigl(\theta \ge X_{min} - z_\gamma \Bigr)=\gamma.
+        \]
+        Таким образом, если считать, что \(\theta\) лежит в интервале вида
+        \(\theta \in \Bigl(X_{min} - z_\gamma,\, X_{min}\Bigr)\),
+        то получаем, что
+        \[
+        P\left(X_{min} - \frac{1}{n}\ln\frac{1}{1-\gamma} \le \theta \le X_{min}\right)=\gamma.
+        \]
+        (перепишем \(-\frac{1}{n}\ln(1-\gamma)=\frac{1}{n}\ln\left(\frac{1}{1-\gamma}\right)\))
+
+        \vspace{10pt}
+        Итого, интервал для параметра \(\theta\) с доверительной вероятностью \(\gamma\) имеет вид:
+        \[
+        \theta \in \left(X_{min} - \frac{1}{n}\ln\left(\frac{1}{1-\gamma}\right),\, X_{min}\right).
+        \]
+    \end{solution}
+    
+
+    % \begin{answer}
+    % \end{answer}
+
+\end{problem}
+
+\vspace{25pt}
+
+\end{document}
