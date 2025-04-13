@@ -116,7 +116,7 @@ for i, val in enumerate(Y):
 plt.xticks(X, labels=[str(m) for m in X])
 
 plt.tight_layout()
-plt.savefig('1.14.png')
+plt.savefig('../../plots/1.1.4.png')
 plt.close()
 
 
@@ -133,13 +133,13 @@ plt.close()
 # для соответствующих интервалов.
 
 plt.xlabel('Значение $x$')
-X = intervals[1:] 
+X = intervals[1:]
 X = np.round(X, 2)
 plt.ylabel('$F_n(x)$')
 Y = accum_rel_freqs
 
 plt.figure(figsize=(8, 5))
-plt.step(X, Y, where='post', color='m', label='Эмпирическая F')
+plt.plot(X, Y, color='m', label='Эмпирическая F')
 plt.scatter(X, Y, color='m', zorder=3)
 for i, val in enumerate(Y):
     plt.text(X[i], val, f'{val:.2f}', ha='right', va='bottom', color='m', fontsize=12)
@@ -147,7 +147,7 @@ plt.xticks(X, labels=[str(m) for m in X])
 plt.title('Эмпирическая функция распределения $F_n(x)$')
 plt.grid(True)
 plt.legend()
-plt.savefig('1.1.5.png')
+plt.savefig('../../plots/1.1.5.png')
 
 
 
@@ -171,7 +171,7 @@ plt.xticks(X, labels=[str(m) for m in X])
 plt.title('Эмпирическая F (дискретный вариационный ряд)')
 plt.grid(True)
 plt.legend()
-plt.savefig('1.1.6.png')
+plt.savefig('../../plots/1.1.6.png')
 
 
 
