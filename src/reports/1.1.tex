@@ -14,6 +14,7 @@
 \usepackage{makecell}
 \usepackage{float}
 \usepackage{graphicx}
+\usepackage{amsmath}
 
 \definecolor{shadecolor}{RGB}{245,245,247} 
 \geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
@@ -117,7 +118,7 @@
                             \dots & \dots & \dots & \dots & \dots & \dots & \dots & \dots \\
                         \bottomrule
             \end{tabular}
-        \end{adjustbox}
+        \end{adjustbox}\label{tab:table2}
     \end{table}  
 
     \begin{solution}
@@ -144,7 +145,7 @@
                                 7 & [17.78; 19.89) & 18.84 & 4 & 0.04 & 100 & 1 & 0.019 \\
                             \bottomrule
                 \end{tabular}
-            \end{adjustbox}
+            \end{adjustbox}\label{tab:table}
         \end{table}  
     \end{solution}
     \end{problem}
@@ -171,7 +172,7 @@
             \begin{figure}[H]
                 \centering
                 % such plot paths won't work locally but work for gh workflow. idk lol
-                \includegraphics[width=1\textwidth]{plots/1.1.4.png}
+                \includegraphics[width=1\textwidth]{plots/1.1.4.png}\label{fig:figure3}
             \end{figure}
             
         \end{solution}
@@ -201,7 +202,7 @@
         \begin{solution}
             \begin{figure}[H]
                 \centering
-                \includegraphics[width=0.8\textwidth]{plots/1.1.5.png}  
+                \includegraphics[width=0.8\textwidth]{plots/1.1.5.png}\label{fig:figure}
             \end{figure}
         \end{solution}
     
@@ -225,7 +226,7 @@
             \begin{solution}
                 \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.8\textwidth]{plots/1.1.6.png}  
+                    \includegraphics[width=0.8\textwidth]{plots/1.1.6.png}\label{fig:figure2}
                 \end{figure}
             \end{solution}
         \end{solution}
@@ -287,8 +288,10 @@
             Ширина интервалов \(h\) равна 2.109 \\
 
 
-            \[ \hat{M_e} = L_m + \frac{h(\frac{n}{2} - F_{m-1})}{f_m} \]
-            \[ \hat{M_e} = 13.56 + \frac{2.109(50 - 19)}{46} \approx 14.98\]
+            \begin{gather*}
+                \hat{M_e} = L_m + \frac{h(\frac{n}{2} - F_{m-1})}{f_m}\\
+                \hat{M_e} = 13.56 + \frac{2.109(50 - 19)}{46} \approx 14.98\\
+            \end{gather*}
             
         \end{solution}
     
@@ -317,8 +320,10 @@
             Частота интервала до него \(f_{m-1}\) равна 19, после (\(f_{m+1}\)) - 28 (из задачи №3).\\
             Ширина интервалов \(h\) равна 2.109 \\
             Тогда по методу линейного интерполирования модального интервала, мода \(\hat M_e\) вычисляется по формуле:
-            \[ \hat{M_o} = L_m + \frac{h(f_m - f_{m-1})}{2(f_m - f_{m-1}) + (f_m - f_{m+1})}, \]
-            \[ \hat{M_o} = 13.56 + \frac{2.109(46 - 19)}{2(46 - 19) + (46 - 28)} \approx 14.35\]
+            \begin{gather*}
+                \hat{M_o} = L_m + \frac{h(f_m - f_{m-1})}{2(f_m - f_{m-1}) + (f_m - f_{m+1})},\\
+                \hat{M_o} = 13.56 + \frac{2.109(46 - 19)}{2(46 - 19) + (46 - 28)} \approx 14.35\\
+            \end{gather*}
         \end{solution}
     
         \begin{answer}
@@ -333,8 +338,10 @@
 \vspace{8pt}
 \begin{problem}
     Вычислить коэффициент ассиметрии вариационного ряда
-    \[\tilde{A} = \frac{\tilde{\mu_3}}{s^3},\]
-    \[\tilde{\mu_k} = \frac{\sum^m_{i=1}(x_i - \bar{x})^k n_i}{n},\] 
+    \begin{gather*}
+        \tilde{A} = \frac{\tilde{\mu_3}}{s^3},\\
+        \tilde{\mu_k} = \frac{\sum^m_{i=1}(x_i - \bar{x})^k n_i}{n},\\
+    \end{gather*}
     где \(m\) - число неповторяющихся вариантов или число интервалов     
         
     \begin{solution}
@@ -342,15 +349,17 @@
         \(\bar{x} = 14.81\) (из задания 7)\\
 
         Вычислим третий момент:
-        \[ \tilde{\mu_3} = \frac{\sum^m_{i=1}(x_i - \bar{x})^3 n_i}{n} = 
-        \frac{(      -642.71\cdot1 
-                     -85.76\cdot2 
+        \begin{gather*}
+            \tilde{\mu_3} = \frac{\sum^m_{i=1}(x_i - \bar{x})^3 n_i}{n} =
+        \frac{(      -642.71\cdot1
+                     -85.76\cdot2
                      -12.17\cdot19
                      -0.01\cdot46
                      +7.08\cdot28
                      +65.46\cdot4
-                     )}{100} \]
-            \[ \approx \frac{-585.84}{100} \approx -5.86 \]
+                     )}{100}\\
+            \approx \frac{-585.84}{100} \approx -5.86\\
+        \end{gather*}
         \(\hat{\mu_3} < 0\) говорит о левосторонней ассиметрии. \\
         
         Тепепрь считаем коэффициент ассиметрии:
@@ -377,24 +386,26 @@
         \(\bar{x} = 14.81\) (из задания 7)\\
 
         Вычислим четвертый момент:
-        \[ \tilde{\mu_3} = \frac{\sum^m_{i=1}(x_i - \bar{x})^3 n_i}{n} = 
+        \begin{gather*}
+            \tilde{\mu_4} = \frac{\sum^m_{i=1}(x_i - \bar{x})^4 n_i}{n} =
         \frac{(     5547\cdot1
                     378\cdot2
                     28\cdot19
                     14\cdot28
                     264\cdot4
-                     )}{100} \]
-            \[ \approx \frac{8270.23}{100} \approx 82.7 \]
+                     )}{100}\\
+            \approx \frac{8270.23}{100} \approx 82.7\\
+        \end{gather*}
         \(\hat{\mu_4} > 0\) говорит о сосредоточенности значений вокруг среднего 
         (заостренная вершина графика по сравнению с нормальным распределением). \\
         
         Тепепрь считаем коэффициент эксцесса:
-        \[ \tilde{A} = \frac{\tilde{\mu_4}}{s^4} = \frac{82.7}{15.06} \approx 5.49\]
+        \[ \tilde{E} = \frac{\tilde{\mu_4}}{s^4} - 3 = \frac{82.7}{15.06} - 3 \approx 2.49\]
 
         \end{solution}
     
         \begin{answer}
-            5.49
+            2.49
         \end{answer}
     
     \end{problem}
