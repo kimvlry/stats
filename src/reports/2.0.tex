@@ -52,11 +52,11 @@
 
 \begin{shdd}
     \textbf{Теоретическая справка}\par\setlength{\parindent}{0pt}
-    Вероятность попадания в доверительный интервал = доверительная вероятность \(\beta\):
+    Вероятность попадания в доверительный интервал = доверительная вероятность \(\gamma\):
     \[
-    P(\hat{\theta} - \delta < \theta < \hat{\theta} + \delta) = \beta,
+    P(\hat{\theta} - \delta < \theta < \hat{\theta} + \delta) = \gamma,
     \]
-    отношение \(\frac{t_{\gamma}s}{\sqrt{n}} = \beta\) называется точностью оценки. 
+    отношение \(\frac{t_{\gamma}s}{\sqrt{n}} = \gamma\) называется точностью оценки. 
     \begin{itemize}
         \item \textbf{Если \(\sigma\) (генеральное СКО) известно}:
         границы доверительного интервала определяются как
@@ -65,7 +65,7 @@
         \]
         \(t_\gamma\) можно найти из соотношения 
         \[
-        2\Phi(t_\gamma) = \beta,
+        2\Phi(t_\gamma) = \gamma,
         \] 
 
         \item \textbf{Если \(\sigma\) неизвестно:}
@@ -121,7 +121,7 @@
                   с \(\gamma\rightarrow\) возрастает и модуль \(\bar{x} +- \frac{t_{\gamma}\sigma}{\sqrt{n}}\).
                   Логически - чтобы с большими гарантиями покрыть истинное значение - нужно взять больший интервал.
             \item Нужно уменьшить доверительный интервал, за счет увеличения выборки 
-            (больше \(n\rightarrow\) меньше \(\beta\rightarrow\) - у`же интервал)
+            (больше \(n\rightarrow\) меньше \(\gamma\rightarrow\) - у`же интервал)
         \end{enumerate}
     \end{solution}
 
