@@ -5,8 +5,7 @@
 
 [**tipovichok №2**](https://kimvlry.github.io/supercool-matstatik/pdfs/2.0.pdf)
   
-#### tipovichok №3
-- brbr...
-  
+[**tipovichok №3**](https://kimvlry.github.io/supercool-matstatik/pdfs/3.0.pdf)  
+
 #### tipovichok №4
 - brr...
