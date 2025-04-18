@@ -170,17 +170,17 @@
                 \newline \[\alpha_1 = \frac{1-\gamma}{2} = \frac{0.05}{2} = 0.025, \quad \chi^2_{0.025, 5} = 12.8,\]
                 \newline \[
                          \alpha_2 = \frac{1+\gamma}{2} = \frac{1.95}{2} = 0.975 \quad \chi^2_{0.975, 5} = 0.831
-                         \] 
+                         \]
 
                          \[
-                         \frac{(n-1)s^2}{\chi^2_{\alpha_1, \, k}} \leq \sigma^2 \leq \frac{(n-1)s^2}{\chi^2_{\alpha_2, \, k}}; 
+                         \frac{(n-1)s^2}{\chi^2_{\alpha_1, \, k}} \leq \sigma^2 \leq \frac{(n-1)s^2}{\chi^2_{\alpha_2, \, k}};
                          \quad\frac{5\cdot 0.013^2}{12.8} \leq \sigma^2 \leq \frac{5\cdot 0.013^2}{0.831};
                          \]
-                         
+
                          \[
-                         \quad 0.0000660156 \leq\sigma^2 \leq 0.00101685; 
+                         \quad 0.0000660156 \leq\sigma^2 \leq 0.00101685;
                          \]
-                         
+
                          \[
                          \sqrt{0.0000660156} \leq\sigma \leq \sqrt{0.00101685}.
                          \]
@@ -200,7 +200,8 @@
 % 3
 \begin{problem}
     Случайная величина \(\xi\) (число сорняков в пробе зерна) распределена по закону
-    Пуассона. Ниже приведено распределение семян сорняков в \(n\) пробах зерна \(x_i\) –
+    Пуассона.
+    Ниже приведено распределение семян сорняков в \(n\) пробах зерна \(x_i\) –
     количество сорняков в одно пробе. \(n_i\) - число проб, содержащих \(x_i\) семян сорняков.
     \\Построить доверительный интервал для параметра \(\lambda\) с надежностью \(0,95\)
     \begin{table}[H]
@@ -213,7 +214,7 @@
                     \(n_1\) & 396 & 361 & 173 & 48 & 11 & 7 & 3 & 1 \\
             \bottomrule
             \end{tabular}
-        \end{adjustbox}
+        \end{adjustbox}\label{tab:table}
     \end{table}  
 
     
@@ -247,13 +248,13 @@
 
             Теперь можно записать доверительный интервал \(\lambda\) в общем виде:
             \[
-            (\hat{\lambda} - z_{\frac{3 + \gamma}{2}} \cdot \sqrt{D(\hat{\lambda})}; \hat{\lambda} + z_{\frac{1+\gamma}{2}} \cdot \sqrt{D(\hat{\lambda})})
+            (\hat{\lambda} - z_{\frac{3 + \gamma}{2}} \cdot \sqrt{D(\hat{\lambda})}; \; \hat{\lambda} + z_{\frac{1+\gamma}{2}} \cdot \sqrt{D(\hat{\lambda})})
             \]
 
             Вычислим для нашего случая: 
             Определим стандартную ошибку:
             \[
-            SE = \sqrt{D(\hat{\lambda})} = \sqrt{\frac{\hat{\lambda}}{n}} = \sqrt{\frac{0.955}{1000}} \approx 0.0309.
+            \sqrt{D(\hat{\lambda})} = \sqrt{\frac{\hat{\lambda}}{n}} = \sqrt{\frac{0.955}{1000}} \approx 0.0309.
             \]
             
             Для доверительной вероятности \(\gamma = 0.95\), краевые значения определяются как:
@@ -298,7 +299,7 @@
         \begin{cases}
             e^{-x-\theta}, & x\geq\theta \\
             0, &x<\theta
-        \end{cases}
+        \end{cases}\label{eq:equation}
     \end{equation}
     
     по выборке объема \(n\) построить интервальную оценку параметра \(\theta\) (сдвиг) с доверительной
@@ -308,7 +309,7 @@
         \[
         f_Y(y)= e^{-y},\quad y \ge 0,
         \]
-        это плотность стандартного экспоненциального распределения. 
+        это плотность стандартного экспоненциального распределения \( \operatorname{Exp}(1) \;( \(\lambda = 1)\).
     
         Пусть \(X_1, X_2, \dots, X_n\) — независимая выборка из данного распределения. Заметим, что условие \(x \ge \theta\) 
         для всех наблюдений позволяет нам использовать минимальное значение выборки как статистику, содержащую всю информацию 
@@ -317,34 +318,47 @@
         X_{min} = \min\{X_1, X_2, \dots, X_n\}.
         \]
     
-        Для каждой величины \(X_i\) имеем
+        Каждое наблюдение \(X_i\) можно представить в виде
         \[
-        X_i = \theta + Y_i,\quad \text{где } Y_i\sim \operatorname{Exp}(1).
+        X_i = \theta + Y_i,\quad \text{где } Y_i\sim \operatorname{Exp}(1),
         \]
-        Тогда
+        где $Y_1, Y_2, \dots, Y_n$ — независимые случайные величины.
         \[
-        X_{min} = \theta + \min\{Y_1, \dots, Y_n\}.
+        Y_i \sim \mathrm{Exp}(1), \quad \text{с плотностью } f_{Y_i}(y) = e^{-y}, \ y \geq 0
         \]
-        Из известных результатов о минимуме независимых экспоненциальных величин следует, что
-        \[
-        \min\{Y_1, \dots, Y_n\} \sim \operatorname{Exp}(n),
-        \]
-        то есть имеет функцию распределения
-        \[
-        F_Z(z) = 1 - e^{-nz},\quad z \ge 0.
-        \]
-        Обозначим
-        \[
-        Z = X_{min} - \theta \sim \operatorname{Exp}(n).
-        \]
-    
+        Обозначим \( Z = \min\{Y_1, Y_2, \dots, Y_n\} \)\
+        Тогда минимум выборки - \( X_{min} = \theta + Z, Z = X_{min} - \theta\)
+
+        \subsubsection*{Функция распределения минимума}
+        Рассмотрим $Z = \min\{Y_1, Y_2, \dots, Y_n\}$.
+
+        Найдём её функцию распределения $F_Z(z)$.
+        \begin{align*}
+        F_Z(z) &= P(Z \leq z) = 1 - P(Z > z) \\
+        &= 1 - P(\min\{Y_1, \dots, Y_n\} > z) \\
+        &= 1 - P(Y_1 > z \cap \dots \cap Y_n > z) \\
+        &= 1 - \prod_{i=1}^n P(Y_i > z) \quad \text{(по независимости)} \\
+        &= 1 - \prod_{i=1}^n e^{-z} \quad \text{(т.к. } P(Y_i > z) = e^{-z}) \\
+        &= 1 - e^{-nz}, \quad z \geq 0
+        \end{align*}
+
+%        \subsubsection*{Плотность распределения минимума}
+%        Дифференцируя функцию распределения, получаем плотность:
+%        \[
+%        f_Z(z) = \frac{d}{dz}F_Z(z) = n e^{-nz}, \quad z \geq 0
+%        \]
+%        Это соответствует плотности экспоненциального распределения с параметром $n$:
+%        \[
+%        Z \sim \mathrm{Exp}(n)
+%        \]
+
         Мы ищем такое множество \(I\), что
         \[
         P(\theta \in I) = \gamma.
         \]
         
         Используя распределение \(Z\), найдем квантиль \(z_\gamma\) такой, что \(P(Z \le z_\gamma) = \gamma\).
-        \\Из функции распределения \(F_Z(z)=1-e^{-nz}\) получаем:
+        \\Имея функцию распределения \(F_Z(z)=1-e^{-nz}\) получаем:
         \[
         1-e^{-nz_\gamma}=\gamma \quad \Rightarrow \quad e^{-nz_\gamma}=1-\gamma,
         \]
@@ -353,13 +367,14 @@
         z_\gamma=-\frac{1}{n}\ln(1-\gamma).
         \]
     
-        Так как \(Z=X_{min}-\theta\), равносильно:
+        Подставим \(Z=X_{min}-\theta\):
         \[
         P\Bigl(X_{min} -\theta \le z_\gamma \Bigr)=\gamma \Leftrightarrow P\Bigl(\theta \ge X_{min} - z_\gamma \Bigr)=\gamma.
         \]
-        Таким образом, если считать, что \(\theta\) лежит в интервале вида
-        \(\theta \in \Bigl(X_{min} - z_\gamma,\, X_{min}\Bigr)\),
-        то получаем, что
+        Так как сверху \(\theta\) ограничена \(X_{min}\), получаем
+        \(\theta \in \Bigl(X_{min} - z_\gamma,\, X_{min}\Bigr)\).
+
+        Подставляя \(z_{\gamma}\):
         \[
         P\left(X_{min} - \frac{1}{n}\ln\frac{1}{1-\gamma} \le \theta \le X_{min}\right)=\gamma.
         \]
