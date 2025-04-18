@@ -236,7 +236,7 @@
             \[
             D\left(\sum_{i=1}^n X_i\right) = \sum_{i=1}^n D(X_i) = \sum_{i=1}^n \lambda = n\lambda.
             \]
-            Так как \(\hat{\lambda} = \frac{1}{n} \sum_{i=1}^n X_i\), найдём дисперсию оценки:
+            Используем полученное значение для нахождения дисперсии оценки \(\hat{\lambda} = \frac{1}{n} \sum_{i=1}^n X_i\):
             \[
             D(\hat{\lambda}) = D\left(\frac{1}{n} \sum_{i=1}^n X_i \right) 
             = \frac{1}{n^2} \cdot D\left(\sum_{i=1}^n X_i\right) 
@@ -244,7 +244,13 @@
             \]
             Итого: \(\hat{\lambda} \sim N\left(\lambda,\, \frac{\lambda}{n}\right).\)
         \end{enumerate}
-            
+
+            Теперь можно записать доверительный интервал \lambda в общем виде: 
+            \[
+            (\hat{\lambda} - z_{\frac{3 + \gamma}{2}} \cdot \sqrt{D(\hat{\lambda})}; \hat{\lambda} + z_{\frac{1+\gamma}{2}} \cdot \sqrt{D(\hat{\lambda})})
+            \]
+
+            Вычислим для нашего случая: 
             Определим стандартную ошибку:
             \[
             SE = \sqrt{D(\hat{\lambda})} = \sqrt{\frac{\hat{\lambda}}{n}} = \sqrt{\frac{0.955}{1000}} \approx 0.0309.
