@@ -39,8 +39,10 @@
 \newtheorem{problem}{Задача}\setlength{\parindent}{0pt}
 
 \newenvironment{solution}
-{\begin{shdd}\textbf{Решение:}\par\setlength{\parindent}{0pt}}
-{\end{shdd}}
+{\begin{shdd}
+     \textbf{Решение:}\par\setlength{\parindent}{0pt}}
+     {
+\end{shdd}}
 
 \newenvironment{answer}
 {\par\noindent\textbf{Ответ:}}
@@ -50,82 +52,180 @@
 
 \begin{document}
 
-\maketitle
+    \maketitle
 
-\begin{shdd}
-    \textbf{Теоретическая справка}\par\setlength{\parindent}{0pt}
+    \begin{shdd}
+        \textbf{Теоретическая справка}\par\setlength{\parindent}{0pt}
+        \begin{itemize}
+            \item Нулевая гипотеза \(H_0 : \theta = \theta_0\)
+            \item Альтернативная гипотеза \(H_1\)
+            \begin{itemize}
+                \item двусторонняя: \(\theta \neq \theta_0\)
+                \item односторонняя \(\theta > \theta_0, \theta < \theta_0\)
+            \end{itemize}
+            \item Ошибка I рода - отклонение верной \(H_0\)
+            \begin{itemize}
+                \item \(P(I) = \alpha\) - уровень значимости
+                \item Ошибка II рода
+            \end{itemize}
+            \item Ошибка II рода - принятие неверной \(H_1\)
+            \begin{itemize}
+                \item \(P(II) = \beta\)
+                \item \(1 - \beta\) - мощность критерия
+                или вероятность правильно отвергнуть \(H_0\), когда она ложна.
+            \end{itemize}
+        \end{itemize}
+    \end{shdd}
+    \vspace{10pt}
 
-\end{shdd}
-\vspace{10pt}
 
 
-
-\newpage
+    \newpage
 % 1
-\begin{problem}
+    \begin{problem}
+        По выборке объема \(n = 36\), извлеченной из нормальной генеральной совокупности
+        с известным средним квадратическим отклонением \(\sigma = 6\), на уровне значимости
+        \(\alpha = 0,01\) проверяется нулевая гипотеза \(H_0\):
+        \(a = a_0 = 15\) при конкурирующей гипотезе \(H_1 : a = a_0 \neq 15\).\\
+        \\
+        Найти мощность \((1-\beta)\) двустороннего критерия проверки рассматриваемой гипотезы для \(a_1 = 12\).
+
+        \begin{solution}
+%            Найдем границы допустимой области:
+%            \begin{gather*}
+%                \Phi(k_{crit}) = \frac{1 - \alpha}{2} = \frac{0,995}{2} = 0,4975 \Longrightarrow k_{crit} = 2,08\\
+%                \Phi(-k_{crit}) = -\Phi(k_{crit}) \Longrightarrow -k_{crit} = -2,08\\
+%            \end{gather*}
+%            итого, допустимая область: \([-2,08; 2,08]\)
+%
+%            \[
+%                U = \frac{\bar{x} - a_0}{\frac{\sigma}{\sqrt {n}}} = \frac{\bar{x} - 15}{6/\sqrt{36}} = \bar{x} - 15
+%            \]
+%
+%            Найдем мощность рассматриваемого критерия, что по определению есть вероятность
+%            попадания статистики критерия в критическую область при допущении, что справедлива
+%            конкурирующая гипотеза
+%
+%            \begin{gather*}
+%                1 - \beta = P\left(\left| \frac{\bar{x} - a_0}{\frac{\sigma}{\sqrt{n}}} \right| > k_{\text{crit}} \,\middle|\, H_1\right); \\
+%                \left| \frac{\bar{x} - a_0}{\frac{\sigma}{\sqrt{n}}} \right| > k_{\text{crit}} \\
+%                \Leftrightarrow \\
+%                \bar{x} - a_0 < -k_{\text{crit}} \;\cup\; \bar{x} - a_0 > k_{\text{crit}} \\
+%                \Leftrightarrow \\
+%                \bar{x} < a_0 - k_{\text{crit}} \;\cup\; \bar{x} > a_0 + k_{\text{crit}} \\
+%                \bar{x} < 12,92 \;\cup\; \bar{x} > 17,08
+%            \end{gather*}
+%            если \(\bar{x}\) оказывается в этих пределах, то \(H_0\) отвергается.
+%            \\
+%            Теперь найдем мощность
+
+        \end{solution}
+
+        \begin{answer}
+        \end{answer}
+
+    \end{problem}
 
 
-    \begin{solution}
-    \end{solution}
 
-
-     \begin{answer}
-     \end{answer}
-
-
-\end{problem}
-
-
-
-\vspace{10pt}
+    \vspace{10pt}
 % 2
-\begin{problem}
+    \begin{problem}
+        Из нормальной генеральной совокупности извлечена выборка объема \(n=17\) и по ней
+        найдена исправленная выборочная дисперсия \(s^2 = 0,24\).
+        Требуется при уровне значимости \(a = 0,05\) проверить нулевую гипотезу \(H_0: \sigma^2 = 18\),
+        приняв в качестве альтернативной гипотезы \(H_1: \sigma^2 > 0,18\)
+
+        \begin{solution}
+        \end{solution}
 
 
-    \begin{solution}
-    \end{solution}
+        \begin{answer}
+        \end{answer}
 
 
-     \begin{answer}
-     \end{answer}
-
-
-\end{problem}
+    \end{problem}
 
 
 
-\vspace{10pt}
+    \vspace{10pt}
 % 3
-\begin{problem}
+    \begin{problem}
+        По группировке, полученной в Практической работе №1(часть1), используя критерий \(\chi^2\),
+        проверить при уровнях значимости \(0,05\) и \(0,01\) гипотезу о нормальном распределении
+        соответствующего признака взяв в качестве значений параметров нормального распределения
+        их оценки, полученные по сгруппированным данным
+
+        \begin{solution}
+        \end{solution}
+
+        \begin{answer}
+        \end{answer}
+
+    \end{problem}
 
 
-    \begin{solution}
-    \end{solution}
 
-
-    \begin{answer}
-    \end{answer}
-
-
-\end{problem}
-
-
-
-\vspace{10pt}
+    \vspace{10pt}
 % 4
-\begin{problem}
+    \begin{problem}
+        По выборке объема \(n = 30\) найден средний вес \(x = 130\)г изделий, изготовленных на
+        первом станке; по выборке объема \(m = 40\) найден средний вес \(\bar{y} = 125\)г изделий,
+        изготовленных на втором станке.
+        Генеральные дисперсии известны: \(D(X) = 60\)г, \(D(Y) = 80\)г.
+        Требуется при уровне значимости \(0,05\) проверить нулевую гипотезу \(H_0 : M(X) = M(Y)\)
+        при конкурирующей гипотезе \(H_1 : M(X) \neq M(Y)\).
+        Предполагается, что случайные величины \(X\)и\(Y\) распределены нормально и выборки независимы
+
+        \begin{solution}
+        \end{solution}
+
+        \begin{answer}
+        \end{answer}
+
+    \end{problem}
 
 
-    \begin{solution}
-    \end{solution}
+    \vspace{10pt}
+% 5
+    \begin{problem}
+        В результате взвешивания \(800\) стальных шариков получено эмпирическое распределение,
+        приведенное в таблице ( в первом столбце указан интервал веса в граммах, во втором –
+        частота, то есть количество шариков, вес которых принадлежит этому интервалу.
+        Требуется при уровне значимости \(0,01\) проверить гипотезу о том,
+        что вес шариков \(X\) распределен равномерно
+
+        \begin{table}[H]
+    \centering
+    \begin{adjustbox}{max width=\textwidth}
+        \begin{tabular}{l c c}
+            \toprule
+            \makecell{\(X_{i-1} - X_i\)} & \makecell{\(n_i\)} & \\
+            \midrule
+            20.0-20.5 & 91 \\
+            20.5-21.0 & 76 \\
+            21.0-21.5 & 75 \\
+            21.5-22.0 & 74 \\
+            22.0-22.5 & 92 \\
+            22.5-23.0 & 83 \\
+            23.0-23.5 & 79 \\
+            23.5-24.0 & 73 \\
+            24.0-24.5 & 80 \\
+            24.5-25.0 & 77 \\
+            \bottomrule
+        \end{tabular}
+    \end{adjustbox}
+    \label{tab:table}
+\end{table}
 
 
-     \begin{answer}
-     \end{answer}
+        \begin{solution}
+        \end{solution}
 
+        \begin{answer}
+        \end{answer}
 
-\end{problem}
-
+    \end{problem}
 
 
 \end{document}
